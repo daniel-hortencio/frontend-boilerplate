@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DashboardTemplate from '../../Layouts/private/Dashboard';
+import DashboardTemplate from '../../layouts/private/Dashboard';
 
 const AdminPage: React.FC = () => {
   return (

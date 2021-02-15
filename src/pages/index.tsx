@@ -1,10 +1,9 @@
 import Head from 'next/head';
 
-import WebsiteTemplate from '../Layouts/public/Website';
-import Section from '../components/Section';
-import Text from '../components/Text';
+import WebsiteTemplate from '../layouts/public/Website';
+import SectionExample from '../components/Home/SectionExample';
 
-export default function Home() {
+const Home = () => {
   return (
     <WebsiteTemplate>
       <Head>
@@ -12,14 +11,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Section>
-        <Text element="h1" limit={2}>
-          Olha só que texto
-          <Text element="span" text="bacana" />
-          demais da conta Sôh! Eita carambolas meu irmão doidoo!!
-        </Text>
-        <span>Qualquer </span>
-      </Section>
+      <SectionExample />
     </WebsiteTemplate>
   );
-}
+};
+
+export default Home;

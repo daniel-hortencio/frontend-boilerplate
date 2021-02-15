@@ -23,7 +23,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/pages/app/admin.ts",
-    "src/Layouts/private/Dashboard.tsx",
+    "src/layouts/private/Dashboard.tsx",
     "src/pages/index.tsx"
 , "src/pages/_app.js", "src/pages/_app.js", "src/pages/_document.tsx"  ],
   "exclude": [
