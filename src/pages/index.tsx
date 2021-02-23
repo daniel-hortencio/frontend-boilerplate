@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import WebsiteTemplate from '../layouts/public/Website';
+import WebsiteTemplate from '../templates/public/Website';
 import SectionExample from '../components/Home/SectionExample';
 
 const Home = () => {
