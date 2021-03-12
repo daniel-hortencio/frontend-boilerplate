@@ -27,7 +27,7 @@ const Tag = ({ icon, text, backgroundColor, color, className }: TagProps) => {
     }
 
     if (text) {
-      return <>{text}</>;
+      return <span>{text}</span>;
     }
 
     if (icon) {

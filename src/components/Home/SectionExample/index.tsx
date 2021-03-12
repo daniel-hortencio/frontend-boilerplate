@@ -9,7 +9,7 @@ const SectionExample = () => {
         <Text element="span" text="bacana" />
         demais da conta Sôh! Eita carambolas meu irmão doidoo!!
       </Text>
-      <span>Qualquer </span>
+      <span className="bg-blue-500 text-white">Qualquer</span>
     </Section>
   );
 };
