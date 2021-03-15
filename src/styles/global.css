@@ -6,6 +6,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 html,
@@ -15,6 +18,7 @@ body {
 
 button {
   cursor: pointer;
+  background: none;
 }
 
 a {
@@ -25,3 +29,17 @@ a {
 ul {
   list-style: none;
 }
+
+textarea:focus,
+input:focus,
+select:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+}
+

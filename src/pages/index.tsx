@@ -1,7 +1,8 @@
 import Head from 'next/head';
 
 import WebsiteTemplate from '../templates/public/Website';
-import SectionExample from '../components/Home/SectionExample';
+
+import PageHome from '../containers/PageHome';
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SectionExample />
+      <PageHome />
     </WebsiteTemplate>
   );
 };
