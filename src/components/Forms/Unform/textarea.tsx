@@ -5,9 +5,10 @@ import { useField } from '@unform/core';
 
 interface Props extends InputProps {
   name: string;
+  placeholder: string;
 }
 
-export const TextArea = ({ name, ...rest }: Props) => {
+export const TextArea = ({ name, placeholder, ...rest }: Props) => {
   const inputRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
 
@@ -25,5 +26,12 @@ export const TextArea = ({ name, ...rest }: Props) => {
     });
   }, [fieldName, registerField]);
 
-  return <textarea ref={inputRef} defaultValue={defaultValue} {...rest} />;
+  return (
+    <textarea
+      ref={inputRef}
+      defaultValue={defaultValue}
+      placeholder={placeholder}
+      {...rest}
+    />
+  );
 };

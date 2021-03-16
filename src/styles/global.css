@@ -16,11 +16,6 @@ body {
   overflow-x: hidden;
 }
 
-button {
-  cursor: pointer;
-  background: none;
-}
-
 a {
   text-decoration: inherit;
   color: inherit;
@@ -30,12 +25,22 @@ ul {
   list-style: none;
 }
 
+button:focus,
 textarea:focus,
 input:focus,
 select:focus {
   border: none;
   outline: none;
   box-shadow: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+}
+
+select {
+  box-shadow: inset 0 0 0 5px #fff !important;
 }
 
 button {

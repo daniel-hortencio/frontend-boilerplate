@@ -1,43 +1,63 @@
-import React, { useRef, useEffect } from 'react';
-import ReactSelect, {
-  OptionTypeBase,
-  Props as SelectProps,
-} from 'react-select';
+import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 
-interface Props extends SelectProps<OptionTypeBase> {
+export type Option = {
+  label: string;
+  value: string;
+};
+
+export type SelectInputProps = {
+  id?: string;
   name: string;
-}
-
-export const Select = ({ name, ...rest }: Props) => {
-  const selectRef = useRef(null);
-  const { fieldName, defaultValue, registerField, error } = useField(name);
-
+  options: Option[];
+  defaultOption?: Option;
+  placeholder?: string;
+  required?: boolean;
+  isMulti?: boolean;
+  className?: string;
+  onChange?:
+    | ((event: React.ChangeEvent<HTMLSelectElement>) => void)
+    | undefined;
+};
+export function Select({
+  id,
+  name,
+  options,
+  defaultOption,
+  placeholder,
+  required = false,
+  isMulti = false,
+  className = '',
+  onChange,
+}: SelectInputProps) {
+  const inputRef = useRef(null);
+  const { fieldName, registerField } = useField(name);
   useEffect(() => {
     registerField({
       name: fieldName,
-      ref: selectRef.current,
-      getValue: (ref: any) => {
-        if (rest.isMulti) {
-          if (!ref.state.value) {
-            return [];
-          }
-          return ref.state.value.map((option: OptionTypeBase) => option.value);
-        }
-        if (!ref.state.value) {
-          return '';
-        }
-        return ref.state.value.value;
-      },
+      ref: inputRef.current,
+      path: 'value',
     });
-  }, [fieldName, registerField, rest.isMulti]);
+  }, [fieldName, registerField, isMulti]);
 
   return (
-    <ReactSelect
-      defaultValue={defaultValue}
-      ref={selectRef}
-      classNamePrefix="react-select"
-      {...rest}
-    />
+    <select
+      className={className}
+      ref={inputRef}
+      id={id || fieldName}
+      defaultValue={defaultOption?.value || ''}
+      required={required}
+      onChange={onChange}
+      multiple={isMulti}
+    >
+      <option value="" disabled>
+        {placeholder}
+      </option>
+      {options.map((option, index) => (
+        <option key={`${option.value}_${index}`} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
   );
-};
+}

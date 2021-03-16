@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import WebsiteTemplate from '../templates/public/Website';
 
-import PageHome from '../containers/PageHome';
+import PageHome from '../containers/PageExample';
 
 const Home = () => {
   return (

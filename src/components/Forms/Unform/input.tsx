@@ -5,9 +5,16 @@ import { useField } from '@unform/core';
 
 interface Props extends InputProps {
   name: string;
+  type?: 'text' | 'tel' | 'number';
+  placeholder: string;
 }
 
-export const InputText = ({ name, ...rest }: Props) => {
+export const InputText = ({
+  name,
+  type = 'text',
+  placeholder,
+  ...rest
+}: Props) => {
   const inputRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
 
@@ -26,6 +33,12 @@ export const InputText = ({ name, ...rest }: Props) => {
   }, [fieldName, registerField]);
 
   return (
-    <ReactInputMask ref={inputRef} defaultValue={defaultValue} {...rest} />
+    <ReactInputMask
+      ref={inputRef}
+      defaultValue={defaultValue}
+      type={type}
+      placeholder={placeholder}
+      {...rest}
+    />
   );
 };

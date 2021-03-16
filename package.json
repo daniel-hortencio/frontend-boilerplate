@@ -24,7 +24,8 @@
     "react-input-mask": "^2.0.4",
     "react-select": "^4.2.1",
     "styled-components": "^5.2.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.13.1",
