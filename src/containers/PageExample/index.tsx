@@ -1,9 +1,12 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import * as Yup from 'yup';
 
 import Section from '../../components/Section';
 import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 import { ValidationError } from 'yup';
+
+import getValidationErrors from '../../utils/getValidationErrors';
 import {
   InputText,
   Select,
@@ -11,8 +14,9 @@ import {
 } from '../../components/Forms/Unform/index';
 
 const PageHome = () => {
+  const formRef = useRef<FormHandles>(null);
+
   const handleSubmit = useCallback(async data => {
-    console.log(data);
     try {
       const schema = Yup.object().shape({
         text: Yup.string().required('Texto obrigatório'),
@@ -27,15 +31,11 @@ const PageHome = () => {
       console.log(data);
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
-        const validationErrors: Errors = {};
-        err.inner.forEach((error: any) => {
-          validationErrors[error.path] = error.message;
-        });
-
-        console.log(validationErrors);
-        //const errors = getValidationErrors(err);
-        //formRef.current?.setErrors(errors);
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
       }
+      //const errors = getValidationErrors(err);
+      //formRef.current?.setErrors(errors);
     }
   }, []);
 
